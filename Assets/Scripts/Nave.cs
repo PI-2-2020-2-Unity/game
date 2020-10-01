@@ -21,6 +21,7 @@ public class Nave : MonoBehaviour
         inventario = new[] {"operacion 1","Operacion 2","Operacion 3"};
         Debug.Log(inventario[expanzor]);
 
+        StartCoroutine(Disparar());
     }
 
 
@@ -65,9 +66,17 @@ public class Nave : MonoBehaviour
         }
         
     }
-    public void Disparar()
+    public IEnumerator Disparar()
     {
+        while(true)
+        {
+            yield return new WaitUntil(()=> Input.GetButton("Fire1"));
 
+            // TODO Instantiate
+            Debug.Log("Nave: Shoot");
+
+            yield return new WaitForSeconds(0.5f);
+        }
     } 
     public void Seleccionar_operacion()
     {

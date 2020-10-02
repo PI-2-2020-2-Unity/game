@@ -18,10 +18,9 @@ public class Nave : MonoBehaviour
         rb = this.GetComponent<Rigidbody2D>();
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z) );
         Debug.Log(screenBounds);
-        inventario = new[] {"operacion 1","Operacion 2","Operacion 3"};
+        inventario = new[] {"2 + 2","4 - 3","6 x 4"};
         Debug.Log(inventario[expanzor]);
-
-        StartCoroutine(Disparar());
+        Cursor.visible = false;
     }
 
 
@@ -30,13 +29,10 @@ public class Nave : MonoBehaviour
     {
         movimiento();
         Seleccionar_operacion();
+        
 
     }
 
-    private void LateUpdate()
-    {
-       
-    }
 
     public void movimiento()
     {
@@ -66,18 +62,7 @@ public class Nave : MonoBehaviour
         }
         
     }
-    public IEnumerator Disparar()
-    {
-        while(true)
-        {
-            yield return new WaitUntil(()=> Input.GetButton("Fire1"));
-
-            // TODO Instantiate
-            Debug.Log("Nave: Shoot");
-
-            yield return new WaitForSeconds(0.5f);
-        }
-    } 
+    
     public void Seleccionar_operacion()
     {
         if (Input.GetKeyDown(KeyCode.E))

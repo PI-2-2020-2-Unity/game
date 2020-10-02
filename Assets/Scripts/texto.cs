@@ -4,7 +4,9 @@ using TMPro;
 
 public class texto : MonoBehaviour
 {
-    public TextMeshProUGUI municion;
+    public TextMeshProUGUI optr;
+    public TextMeshProUGUI valor1;
+    public TextMeshProUGUI Valor2;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +16,8 @@ public class texto : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        municion.text = Nave.inventario[Nave.expanzor];
+        optr.text = operation_gen.operador;
+        valor1.text = operation_gen.true_N1.ToString();
+        Valor2.text = operation_gen.true_N2.ToString();
     }
 }

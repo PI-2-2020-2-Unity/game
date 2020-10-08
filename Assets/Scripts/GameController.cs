@@ -11,6 +11,9 @@ public class GameController : MonoBehaviour
     public GameObject objectToSpawn;
     public int randomRange = 30;
     public float spawnTime;
+
+    int Difficulty;
+
     //public Enemy2[] enemies2;
     //public Enemy3[] enemies3;
     //public Boss[] bosses;
@@ -18,6 +21,8 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        this.Difficulty = 0;
+
         enemies = new Enemy1[15];
         enemiesCount = 0;
         StartCoroutine(EnemySpawn());
@@ -37,6 +42,12 @@ public class GameController : MonoBehaviour
     void Loss()
     {
 
+    }
+
+    public void setDifficulty(int d)
+    {
+        // Do something with the difficulty
+        this.Difficulty = d;
     }
 
     IEnumerator EnemySpawn()

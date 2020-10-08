@@ -244,9 +244,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 126749413}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5da16f48641467419391fc26f54cdea, type: 3}
+  m_Script: {fileID: 11500000, guid: 7039fefe24eca174183d5ce578caeb7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  optr: {fileID: 1042688476}
+  valor1: {fileID: 1356631835}
+  Valor2: {fileID: 616825036}
 --- !u!50 &126749415
 Rigidbody2D:
   serializedVersion: 4
@@ -1238,7 +1241,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1542817526}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eeecc054733371b41a1ea0c6f1423ba2, type: 3}
+  m_Script: {fileID: 11500000, guid: 97618f7bca3b0be438e438ff8cb42b0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1542817528

@@ -14,11 +14,20 @@ public class Enemy1 : MonoBehaviour
     void FixedUpdate()
     {
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, 0.1f);
-        transform.LookAt(target.transform);
+
+        //transform.eulerAngles = new Vector3(
+        //    0f,
+        //    0f,
+        //    Vector2.Angle(transform.position, player.transform.position)
+        //);
+
+        transform.LookAt(target.transform, Vector3.back);
     }
 
     private void Start()
     {
+        rb = GetComponent<Rigidbody>();
+
         StartCoroutine(ShootCoroutine());
     }
 

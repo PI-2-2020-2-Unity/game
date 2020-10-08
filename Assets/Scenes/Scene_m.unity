@@ -990,7 +990,7 @@ MonoBehaviour:
   enemies: []
   enemiesCount: 0
   player: {fileID: 139797531}
-  objectToSpawn: {fileID: 5410180133514489336, guid: 08816528889b7b64ba6f4922d1969509, type: 3}
+  objectToSpawn: {fileID: 7701563697183820485, guid: 7b5c9400cd8ef5be6a9a2c78d5961ec7, type: 3}
   randomRange: 30
   spawnTime: 0
 --- !u!4 &1346888187

@@ -54,7 +54,11 @@ public class GameController : MonoBehaviour
     {
         while (enemiesCount < 15)
         {
-            Vector3 spawnPos = new Vector3(player.transform.position.x + Random.Range(-randomRange, randomRange), 0, player.transform.position.z + Random.Range(-randomRange, randomRange));
+            Vector3 spawnPos = new Vector3(
+                player.transform.position.x + Random.Range(-randomRange, randomRange),
+                player.transform.position.y + Random.Range(-randomRange, randomRange),
+                0f
+            );
             GameObject enemy = Instantiate(objectToSpawn, spawnPos, player.transform.rotation);
 
             Enemy1 enemy1 = enemy.GetComponent<Enemy1>();

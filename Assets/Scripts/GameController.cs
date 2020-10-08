@@ -55,7 +55,13 @@ public class GameController : MonoBehaviour
         while (enemiesCount < 15)
         {
             Vector3 spawnPos = new Vector3(player.transform.position.x + Random.Range(-randomRange, randomRange), 0, player.transform.position.z + Random.Range(-randomRange, randomRange));
-            Instantiate(objectToSpawn, spawnPos, player.transform.rotation);
+            GameObject enemy = Instantiate(objectToSpawn, spawnPos, player.transform.rotation);
+
+            Enemy1 enemy1 = enemy.GetComponent<Enemy1>();
+
+            enemy1.player = player.transform;
+            enemy1.target = player;
+
             enemiesCount++;
             spawnTime = Random.Range(0, 10);
             yield return new WaitForSeconds(spawnTime);

@@ -984,11 +984,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1346888185}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c3ddaa1b86530812b30ca2686068e37, type: 3}
+  m_Script: {fileID: 11500000, guid: dafe22764d7e7714a92cb6c096d3179c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemies: []
-  Board: {x: 0, y: 0}
+  enemiesCount: 0
+  player: {fileID: 139797531}
+  objectToSpawn: {fileID: 5410180133514489336, guid: 08816528889b7b64ba6f4922d1969509, type: 3}
+  randomRange: 30
+  spawnTime: 0
 --- !u!4 &1346888187
 Transform:
   m_ObjectHideFlags: 0

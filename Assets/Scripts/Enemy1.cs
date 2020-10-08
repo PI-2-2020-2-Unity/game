@@ -27,11 +27,6 @@ public class Enemy1 : MonoBehaviour
 
     }
 
-    public void Shoot()
-    {
-        Instantiate(bulletPrefab, player.position, player.rotation);
-    }
-
     IEnumerator ShootCoroutine()
     {
         while (true)

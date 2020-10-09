@@ -5,12 +5,16 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public Time timer;
-    public Enemy1[] enemies;
-    public int enemiesCount;
+
+    public int maxEnemies = 15;
+    public List<Enemy1> enemies;
     public GameObject player;
     public GameObject objectToSpawn;
     public int randomRange = 30;
     public float spawnTime;
+
+    int Difficulty;
+
     //public Enemy2[] enemies2;
     //public Enemy3[] enemies3;
     //public Boss[] bosses;
@@ -18,8 +22,8 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        enemies = new Enemy1[15];
-        enemiesCount = 0;
+        this.Difficulty = 0;
+
         StartCoroutine(EnemySpawn());
     }
 
@@ -39,13 +43,29 @@ public class GameController : MonoBehaviour
 
     }
 
+    public void setDifficulty(int d)
+    {
+        // Do something with the difficulty
+        this.Difficulty = d;
+    }
+
     IEnumerator EnemySpawn()
     {
-        while (enemiesCount < 15)
+        while (enemies.Count < maxEnemies)
         {
-            Vector3 spawnPos = new Vector3(player.transform.position.x + Random.Range(-randomRange, randomRange), 0, player.transform.position.z + Random.Range(-randomRange, randomRange));
-            Instantiate(objectToSpawn, spawnPos, player.transform.rotation);
-            enemiesCount++;
+            Vector3 spawnPos = new Vector3(
+                player.transform.position.x + Random.Range(-randomRange, randomRange),
+                player.transform.position.y + Random.Range(-randomRange, randomRange),
+                0f
+            );
+            GameObject enemy = Instantiate(objectToSpawn, spawnPos, player.transform.rotation);
+
+            Enemy1 enemy1 = enemy.GetComponent<Enemy1>();
+
+            enemy1.player = player.transform;
+            enemy1.target = player;
+
+            enemies.Add(enemy1);
             spawnTime = Random.Range(0, 10);
             yield return new WaitForSeconds(spawnTime);
         }

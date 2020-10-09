@@ -4,32 +4,31 @@ using UnityEngine;
 
 public class Enemy1 : MonoBehaviour
 {
-    public Rigidbody rb;
+    Rigidbody rb;
     public Transform player;
     public GameObject target;
     public GameObject bulletPrefab;
     public float shootTime;
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, 0.1f);
-        transform.LookAt(target.transform);
-    }
+    public float vel = 1f;
 
     private void Start()
     {
+        rb = GetComponent<Rigidbody>();
+
         StartCoroutine(ShootCoroutine());
     }
 
-    void Update()
+    // Update is called once per frame
+    void FixedUpdate()
     {
+        Quaternion toTarget = Quaternion.LookRotation(
+            target.transform.position - transform.position,
+            Vector3.back
+        );
 
-    }
-
-    public void Shoot()
-    {
-        Instantiate(bulletPrefab, player.position, player.rotation);
+        rb.rotation = toTarget;
+        rb.velocity = toTarget * Vector3.forward * vel;
     }
 
     IEnumerator ShootCoroutine()

@@ -4,25 +4,13 @@ using UnityEngine;
 
 public class Enemy1 : MonoBehaviour
 {
-    public Rigidbody rb;
+    Rigidbody rb;
     public Transform player;
     public GameObject target;
     public GameObject bulletPrefab;
     public float shootTime;
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, 0.1f);
-
-        //transform.eulerAngles = new Vector3(
-        //    0f,
-        //    0f,
-        //    Vector2.Angle(transform.position, player.transform.position)
-        //);
-
-        transform.LookAt(target.transform, Vector3.back);
-    }
+    public float vel = 1f;
 
     private void Start()
     {
@@ -31,8 +19,20 @@ public class Enemy1 : MonoBehaviour
         StartCoroutine(ShootCoroutine());
     }
 
-    void Update()
+    // Update is called once per frame
+    void FixedUpdate()
     {
+        Quaternion toTarget = Quaternion.LookRotation(
+            target.transform.position - transform.position,
+            Vector3.back
+        );
+
+        rb.rotation = toTarget;
+
+        rb.position = Vector3.MoveTowards(transform.position,
+            player.transform.position,
+            vel * Time.fixedDeltaTime
+        );
 
     }
 

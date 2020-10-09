@@ -146,6 +146,7 @@ MonoBehaviour:
   target: {fileID: 0}
   bulletPrefab: {fileID: 2542698167905031607, guid: 4f6e48a0f75dce84bb3025ecc7e8e30c, type: 3}
   shootTime: 0
+  vel: 5
 --- !u!54 &5840977483140477388
 Rigidbody:
   m_ObjectHideFlags: 0

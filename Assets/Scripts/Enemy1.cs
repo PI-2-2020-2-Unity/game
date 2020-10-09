@@ -28,15 +28,7 @@ public class Enemy1 : MonoBehaviour
         );
 
         rb.rotation = toTarget;
-
-        // Too shaky
-        //rb.velocity = toTarget * Vector3.forward * vel;
-
-        rb.position = Vector3.MoveTowards(transform.position,
-            player.transform.position,
-            vel * Time.fixedDeltaTime
-        );
-
+        rb.velocity = toTarget * Vector3.forward * vel;
     }
 
     IEnumerator ShootCoroutine()

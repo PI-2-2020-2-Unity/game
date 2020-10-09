@@ -1001,9 +1001,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dafe22764d7e7714a92cb6c096d3179c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxEnemies: 15
   enemies: []
-  enemiesCount: 0
-  player: {fileID: 139797531}
+  player: {fileID: 126749413}
   objectToSpawn: {fileID: 7701563697183820485, guid: 7b5c9400cd8ef5be6a9a2c78d5961ec7, type: 3}
   randomRange: 30
   spawnTime: 0

@@ -5,8 +5,9 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public Time timer;
-    public Enemy1[] enemies;
-    public int enemiesCount;
+
+    public int maxEnemies = 15;
+    public List<Enemy1> enemies;
     public GameObject player;
     public GameObject objectToSpawn;
     public int randomRange = 30;
@@ -23,8 +24,6 @@ public class GameController : MonoBehaviour
     {
         this.Difficulty = 0;
 
-        enemies = new Enemy1[15];
-        enemiesCount = 0;
         StartCoroutine(EnemySpawn());
     }
 
@@ -52,7 +51,7 @@ public class GameController : MonoBehaviour
 
     IEnumerator EnemySpawn()
     {
-        while (enemiesCount < 15)
+        while (enemies.Count < maxEnemies)
         {
             Vector3 spawnPos = new Vector3(
                 player.transform.position.x + Random.Range(-randomRange, randomRange),
@@ -66,7 +65,7 @@ public class GameController : MonoBehaviour
             enemy1.player = player.transform;
             enemy1.target = player;
 
-            enemiesCount++;
+            enemies.Add(enemy1);
             spawnTime = Random.Range(0, 10);
             yield return new WaitForSeconds(spawnTime);
         }

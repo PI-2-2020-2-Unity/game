@@ -51,6 +51,8 @@ public class GameController : MonoBehaviour
     {
         // Do something with the difficulty
         this.Difficulty = d;
+
+        // TODO
         mainCamera.backgroundColor = Color.black;
     }
 

@@ -10,11 +10,11 @@ public class EnemyBullet : MonoBehaviour
     void Start()
     {
         Destroy(this.gameObject, lifeDuration);
+        GetComponent<Rigidbody>().velocity = transform.rotation * Vector3.forward * speed;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position += transform.forward * speed * Time.deltaTime;
     }
 }

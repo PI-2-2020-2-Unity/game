@@ -35,9 +35,10 @@ public class Enemy1 : MonoBehaviour
     {
         while (true)
         {
-            GameObject bulletObject = Instantiate(bulletPrefab);
-            bulletObject.transform.position = transform.position + transform.forward;
-            bulletObject.transform.forward = transform.forward;
+            Vector3 spawnPos = transform.position ;
+
+            GameObject bulletObject = Instantiate(bulletPrefab, spawnPos, transform.rotation);
+
             shootTime = Random.Range(0, 3);
             yield return new WaitForSeconds(shootTime);
         }

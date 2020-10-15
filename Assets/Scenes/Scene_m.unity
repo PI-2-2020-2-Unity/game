@@ -227,6 +227,7 @@ GameObject:
   - component: {fileID: 126749416}
   - component: {fileID: 126749415}
   - component: {fileID: 126749414}
+  - component: {fileID: 126749418}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -269,7 +270,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 0
 --- !u!212 &126749416
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -337,6 +338,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &126749418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126749413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb64a1dad32b14145ae7d38c1bb86fa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forwardForce: 500
+  bullet: {fileID: 4201356930851906380, guid: bb8251f6268c48f44b8bd73eaddae1a4, type: 3}
+  pointer: {fileID: 139797533}
 --- !u!1 &139797531
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     Rigidbody2D rb;
     public float forwardForce = 500f;
+
+    public float shootTime = 0.5f;
     public GameObject bullet;
 
     public Transform pointer;
@@ -11,6 +14,7 @@ public class Player : MonoBehaviour
 
     void Start() {
         rb = GetComponent<Rigidbody2D>();
+        StartCoroutine(bulletSpawn());
     }
     void FixedUpdate()
     {
@@ -44,5 +48,22 @@ public class Player : MonoBehaviour
         //    bulletObject.transform.forward = transform.forward;
         //}
 
+    }
+
+    IEnumerator bulletSpawn()
+    {
+        while (true)
+        {
+            yield return new WaitUntil(() => Input.GetKey("space"));
+
+            GameObject _bullet = Instantiate(bullet, transform.position, transform.rotation);
+
+            Rigidbody bRb = _bullet.GetComponent<Rigidbody>();
+            bRb.velocity = _bullet.transform.rotation * Vector3.forward * 10f;
+
+            Destroy(_bullet, 5.0f);
+
+            yield return new WaitForSeconds(shootTime);
+        }
     }
 }

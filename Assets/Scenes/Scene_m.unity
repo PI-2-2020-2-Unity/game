@@ -351,7 +351,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forwardForce: 500
-  bullet: {fileID: 4201356930851906380, guid: bb8251f6268c48f44b8bd73eaddae1a4, type: 3}
+  shootTime: 0.5
+  bullet: {fileID: 5266086601558369430, guid: bb8251f6268c48f44b8bd73eaddae1a4, type: 3}
   pointer: {fileID: 139797533}
 --- !u!1 &139797531
 GameObject:

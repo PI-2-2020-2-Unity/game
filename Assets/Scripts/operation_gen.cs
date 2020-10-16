@@ -12,18 +12,21 @@ public class operation_gen : MonoBehaviour
     public static List<string> operador = new List<string>();
     private int operacion;
     public static List<int> respuesta = new List<int>();
+    public GameObject[] enemy;
     // Start is called before the first frame update
     void Start()
     {
-        
+        operator_gen(Random.Range(1, 4));
+        enemigo1(enemy[Random.Range(0, enemy.Length)]);
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (val1 == 3)
+            if (val1 >= true_N1.Count - 1)
             {
                 val1 = 0;
             }
@@ -36,12 +39,17 @@ public class operation_gen : MonoBehaviour
         {
             if (val1 == 0)
             {
-                val1 = 3;
+                val1 = true_N1.Count - 1;
             }
             else
             {
                 val1--;
             }
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            operator_gen(Random.Range(1, 4));
+            enemigo1(enemy[Random.Range(0, enemy.Length)]);
         }
     }
     public void operator_gen(int x)
@@ -58,6 +66,7 @@ public class operation_gen : MonoBehaviour
                 operador.Add("+");
                 Debug.Log(n1 + "+" + n2 + "=" + operacion);
                 respuesta.Add(operacion);
+
 
                 break;
             case 2:
@@ -102,5 +111,11 @@ public class operation_gen : MonoBehaviour
                 break;
 
         }
+
+    }
+    public void enemigo1(GameObject x)
+    {
+        Instantiate(x, new Vector3(Random.Range(-10, 10), Random.Range(-5, 5), 0), Quaternion.identity);
     }
 }
+

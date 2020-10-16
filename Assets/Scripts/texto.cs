@@ -16,8 +16,11 @@ public class texto : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        optr.text = operation_gen.operador[operation_gen.val1];
-        valor1.text = operation_gen.true_N1[operation_gen.val1].ToString();
-        Valor2.text = operation_gen.true_N2[operation_gen.val1].ToString();
+        if (operation_gen.val1 >= 0)
+        {
+            optr.text = operation_gen.operador[operation_gen.val1];
+            valor1.text = operation_gen.true_N1[operation_gen.val1].ToString();
+            Valor2.text = operation_gen.true_N2[operation_gen.val1].ToString();
+        }
     }
 }

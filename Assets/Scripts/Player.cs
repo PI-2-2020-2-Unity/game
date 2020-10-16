@@ -8,8 +8,10 @@ public class Player : MonoBehaviour
 
     public float shootTime = 0.5f;
     public GameObject bullet;
+    static int health = 100;
 
     public Transform pointer;
+    public GameObject deathEffect;
 
 
     void Start() {
@@ -23,30 +25,30 @@ public class Player : MonoBehaviour
         float angle = Mathf.Atan2(dist.y, dist.x) * Mathf.Rad2Deg;
         rb.rotation = angle;
 
-        //if (Input.GetKey("d"))
-        //{
-        //    // transform.Translate(Vector3.forward * Time.deltaTime);
-        //    rb.AddForce(forwardForce * Time.deltaTime, 0, 0);
-        //}
-        //if (Input.GetKey("a"))
-        //{
-        //    rb.AddForce(-forwardForce * Time.deltaTime, 0, 0);
-        //}
-        //if (Input.GetKey("w"))
-        //{
-        //    rb.AddForce(0, 0, forwardForce * Time.deltaTime);
-        //}
-        //if (Input.GetKey("s"))
-        //{
-        //    rb.AddForce(0, 0, -forwardForce * Time.deltaTime);
-        //}
+        if (Input.GetKey("d"))
+        {
+            // transform.Translate(Vector3.forward * Time.deltaTime);
+            rb.AddForce(new Vector2(forwardForce * Time.deltaTime, 0));
+        }
+        if (Input.GetKey("a"))
+        {
+            rb.AddForce(new Vector2(-forwardForce * Time.deltaTime, 0));
+        }
+        if (Input.GetKey("w"))
+        {
+            rb.AddForce(new Vector2(0, forwardForce * Time.deltaTime));
+        }
+        if (Input.GetKey("s"))
+        {
+            rb.AddForce(new Vector2(0, -forwardForce * Time.deltaTime));
+        }
 
-        //if (Input.GetKey("space"))
-        //{
-        //    GameObject bulletObject = Instantiate(bullet);
-        //    bulletObject.transform.position = transform.position + transform.forward;
-        //    bulletObject.transform.forward = transform.forward;
-        //}
+        if (Input.GetKey("space"))
+        {
+            GameObject bulletObject = Instantiate(bullet);
+            bulletObject.transform.position = transform.position + transform.forward;
+            bulletObject.transform.forward = transform.forward;
+        }
 
     }
 
@@ -65,5 +67,21 @@ public class Player : MonoBehaviour
 
             yield return new WaitForSeconds(shootTime);
         }
+    }
+
+    public static void TakeDamage(int damage)
+    {
+        // Todo 
+        health -= damage;
+        if (health <=0)
+        {
+            Die();
+        }
+    }
+
+    static void Die()
+    {
+        //Instantiate(deathEffect, transform.position, Quaternion.identity);
+        //Destroy(gameObject);
     }
 }

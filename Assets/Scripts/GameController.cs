@@ -15,6 +15,8 @@ public class GameController : MonoBehaviour
 
     int Difficulty;
 
+    Camera mainCamera;
+
     //public Enemy2[] enemies2;
     //public Enemy3[] enemies3;
     //public Boss[] bosses;
@@ -23,7 +25,9 @@ public class GameController : MonoBehaviour
     void Start()
     {
         this.Difficulty = 0;
+        this.mainCamera = Camera.main;
 
+        setDifficulty(0);
         StartCoroutine(EnemySpawn());
     }
 
@@ -47,6 +51,9 @@ public class GameController : MonoBehaviour
     {
         // Do something with the difficulty
         this.Difficulty = d;
+
+        // TODO
+        mainCamera.backgroundColor = Color.black;
     }
 
     IEnumerator EnemySpawn()

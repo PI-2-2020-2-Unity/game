@@ -270,7 +270,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 0
 --- !u!212 &126749416
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -347,10 +347,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 126749413}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97618f7bca3b0be438e438ff8cb42b0b, type: 3}
+  m_Script: {fileID: 11500000, guid: fb64a1dad32b14145ae7d38c1bb86fa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   enemy: []
+=======
+  forwardForce: 500
+  shootTime: 0.5
+  bullet: {fileID: 5266086601558369430, guid: bb8251f6268c48f44b8bd73eaddae1a4, type: 3}
+  pointer: {fileID: 139797533}
+>>>>>>> 617cf60cd345a4dd3c3a233b7b8324c449be9730
 --- !u!1 &139797531
 GameObject:
   m_ObjectHideFlags: 0
@@ -1020,7 +1027,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1356631833
 GameObject:
@@ -1234,6 +1241,7 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+<<<<<<< HEAD
 --- !u!1 &1542817526
 GameObject:
   m_ObjectHideFlags: 0
@@ -1279,6 +1287,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> 617cf60cd345a4dd3c3a233b7b8324c449be9730
 --- !u!850595691 &1751001922
 LightingSettings:
   m_ObjectHideFlags: 0

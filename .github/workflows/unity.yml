@@ -18,7 +18,7 @@ jobs:
       fail-fast: false
       matrix:
         version:
-          - 2020.1.8f1
+          - 2020.1.9f1
         target:
           - linux-il2cpp
           - windows
@@ -105,7 +105,7 @@ jobs:
       fail-fast: false
       matrix:
         version:
-          - 2020.1.8f1
+          - 2020.1.9f1
         target:
           - WebGL
     steps:

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    Rigidbody2D rb;
+    Rigidbody rb;
     public float forwardForce = 500f;
 
     public float shootTime = 0.5f;
@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
 
 
     void Start() {
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody>();
         StartCoroutine(bulletSpawn());
     }
     void FixedUpdate()
@@ -23,7 +23,8 @@ public class Player : MonoBehaviour
         Vector2 dist = pointer.position - transform.position;
 
         float angle = Mathf.Atan2(dist.y, dist.x) * Mathf.Rad2Deg;
-        rb.rotation = angle;
+        //rb.rotation = angle;
+        rb.rotation = Quaternion.LookRotation(dist, Vector3.up);
 
         if (Input.GetKey("d"))
         {
@@ -41,13 +42,6 @@ public class Player : MonoBehaviour
         if (Input.GetKey("s"))
         {
             rb.AddForce(new Vector2(0, -forwardForce * Time.deltaTime));
-        }
-
-        if (Input.GetKey("space"))
-        {
-            GameObject bulletObject = Instantiate(bullet);
-            bulletObject.transform.position = transform.position + transform.forward;
-            bulletObject.transform.forward = transform.forward;
         }
 
     }

@@ -29,14 +29,6 @@ public class texto : MonoBehaviour
 
     void Update()
     {
-<<<<<<< HEAD
-        if (operation_gen.val1 >= 0)
-        {
-            optr.text = operation_gen.operador[operation_gen.val1];
-            valor1.text = operation_gen.true_N1[operation_gen.val1].ToString();
-            Valor2.text = operation_gen.true_N2[operation_gen.val1].ToString();
-        }
-=======
         if (Input.GetKeyDown(KeyCode.E))
         {
             val1 = (val1+1)%3;
@@ -86,6 +78,5 @@ public class texto : MonoBehaviour
                 break;
         }
         UpdateText(operador.ToString(), n1, n2);
->>>>>>> 617cf60cd345a4dd3c3a233b7b8324c449be9730
     }
 }

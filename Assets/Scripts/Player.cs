@@ -23,8 +23,7 @@ public class Player : MonoBehaviour
         Vector2 dist = pointer.position - transform.position;
 
         float angle = Mathf.Atan2(dist.y, dist.x) * Mathf.Rad2Deg;
-        //rb.rotation = angle;
-        rb.rotation = Quaternion.LookRotation(dist, Vector3.up);
+        rb.rotation = Quaternion.Euler(0, 0, angle);
 
         if (Input.GetKey("d"))
         {

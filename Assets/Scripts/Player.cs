@@ -13,8 +13,14 @@ public class Player : MonoBehaviour
     public Transform pointer;
     public GameObject deathEffect;
 
+    private Transform mainCamera;
+
+    private float dampTime = 0.2f;
+
+    private Vector2 vel = Vector2.zero;
 
     void Start() {
+        mainCamera = Camera.main.transform;
         rb = GetComponent<Rigidbody>();
         StartCoroutine(bulletSpawn());
     }
@@ -29,6 +35,9 @@ public class Player : MonoBehaviour
             new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")),
             1.0f
         )*velocity;
+
+        Vector2 newPos = Vector2.SmoothDamp(mainCamera.position, transform.position, ref vel, dampTime);
+        mainCamera.position = new Vector3(newPos.x, newPos.y, mainCamera.position.z);
     }
 
     IEnumerator bulletSpawn()

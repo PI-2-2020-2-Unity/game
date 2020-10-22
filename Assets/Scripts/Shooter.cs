@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Shooter : MonoBehaviour
 {
-    private Vector3 target;
-    public GameObject puntero;
+    public Transform puntero;
+
+    private Camera _camera;
     // Start is called before the first frame update
     void Start()
     {
-        
+        _camera = GetComponent<Camera>();
     }
 
     // Update is called once per frame
@@ -19,10 +20,11 @@ public class Shooter : MonoBehaviour
     }
     public void Disparar()
     {
-        target = transform.GetComponent<Camera>().ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z));
-        puntero.transform.position = new Vector2(-target.x, -target.y);
-
-        
-
+        puntero.position = (Vector2)_camera.ScreenToWorldPoint(
+            new Vector3(Input.mousePosition.x,
+                Input.mousePosition.y,
+                -transform.position.z
+            )
+        );
     }
 }

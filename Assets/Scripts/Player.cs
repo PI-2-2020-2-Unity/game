@@ -4,7 +4,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     Rigidbody rb;
-    public float forwardForce = 500f;
+    public float velocity = 500f;
 
     public float shootTime = 0.5f;
     public GameObject bullet;
@@ -25,24 +25,10 @@ public class Player : MonoBehaviour
         float angle = Mathf.Atan2(dist.y, dist.x) * Mathf.Rad2Deg;
         rb.rotation = Quaternion.Euler(0, 0, angle);
 
-        if (Input.GetKey("d"))
-        {
-            // transform.Translate(Vector3.forward * Time.deltaTime);
-            rb.AddForce(new Vector2(forwardForce * Time.deltaTime, 0));
-        }
-        if (Input.GetKey("a"))
-        {
-            rb.AddForce(new Vector2(-forwardForce * Time.deltaTime, 0));
-        }
-        if (Input.GetKey("w"))
-        {
-            rb.AddForce(new Vector2(0, forwardForce * Time.deltaTime));
-        }
-        if (Input.GetKey("s"))
-        {
-            rb.AddForce(new Vector2(0, -forwardForce * Time.deltaTime));
-        }
-
+        rb.velocity = (Vector3)Vector2.ClampMagnitude(
+            new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")),
+            1.0f
+        )*velocity;
     }
 
     IEnumerator bulletSpawn()

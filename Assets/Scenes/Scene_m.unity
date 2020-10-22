@@ -734,7 +734,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb64a1dad32b14145ae7d38c1bb86fa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardForce: 500
+  velocity: 20
   shootTime: 0.5
   bullet: {fileID: 5266086601558369430, guid: bb8251f6268c48f44b8bd73eaddae1a4, type: 3}
   pointer: {fileID: 139797533}

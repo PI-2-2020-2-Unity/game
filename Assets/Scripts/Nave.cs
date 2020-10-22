@@ -27,42 +27,9 @@ public class Nave : MonoBehaviour
 
     private void Update()
     {
-        movimiento();
         Seleccionar_operacion();
-        
-
     }
 
-
-    public void movimiento()
-    {
-        float x = Input.GetAxis("Horizontal");
-        float y = Input.GetAxis("Vertical");
-        Vector2 dir = new Vector2(x, y);
-       
-        if (rb.transform.position.x > -(screenBounds.x + 0.5))
-        {
-            rb.transform.position = new Vector3(-(screenBounds.x + 0.5f), rb.transform.position.y, rb.transform.position.z);
-        }
-        if(rb.transform.position.x < (screenBounds.x + 0.5))
-        {
-            rb.transform.position = new Vector3((screenBounds.x + 0.5f), rb.transform.position.y, rb.transform.position.z);
-        }
-        if (rb.transform.position.y < (screenBounds.y + 0.5))
-        {
-            rb.transform.position = new Vector3(rb.transform.position.x,(screenBounds.y + 0.5f) , rb.transform.position.z);
-        }
-        if (rb.transform.position.y > -(screenBounds.y + 0.5))
-        {
-            rb.transform.position = new Vector3(rb.transform.position.x, -(screenBounds.y + 0.5f), rb.transform.position.z);
-        }
-        else
-        {
-            rb.velocity = new Vector3(dir.x * speed * Time.deltaTime, dir.y * speed* Time.deltaTime);
-        }
-        
-    }
-    
     public void Seleccionar_operacion()
     {
         if (Input.GetKeyDown(KeyCode.E))

@@ -8,7 +8,7 @@ public class texto : MonoBehaviour
     public TextMeshProUGUI optr;
     public TextMeshProUGUI valor1;
     public TextMeshProUGUI Valor2;
-    public static int val1 = 0;
+    public static int val1=-1;
     public static int n1;
     public static int n2;
     private static int operacion;
@@ -33,35 +33,37 @@ public class texto : MonoBehaviour
 
     void Update()
     {
-        
-        if (Input.GetKeyDown(KeyCode.E))
+        if (val1 >= 0)
         {
-            if (val1 >= true_N1.Count - 1)
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                val1 = 0;
+                if (val1 >= true_N1.Count - 1)
+                {
+                    val1 = 0;
+                }
+                else
+                {
+                    val1++;
+                }
             }
-            else
+            else if (Input.GetKeyDown(KeyCode.Q))
             {
-                val1++;
+                if (val1 == 0)
+                {
+                    val1 = true_N1.Count - 1;
+                }
+                else
+                {
+                    val1--;
+                }
             }
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                operator_gen(Random.Range(1, 4));
+
+            }
+            UpdateText(operador[val1], true_N1[val1], true_N2[val1]);
         }
-        else if (Input.GetKeyDown(KeyCode.Q))
-        {
-            if (val1 == 0)
-            {
-                val1 = true_N1.Count - 1;
-            }
-            else
-            {
-                val1--;
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            operator_gen(Random.Range(1, 4));
-            
-        }
-        UpdateText(operador[val1], true_N1[val1], true_N2[val1]);
     }
     public static void operator_gen(int x)
     {

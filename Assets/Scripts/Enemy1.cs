@@ -38,12 +38,11 @@ public class Enemy1 : MonoBehaviour
     {
         while (true)
         {
+            int x = Random.Range(1, 4);
             Vector3 spawnPos = transform.position ;
 
             GameObject bulletObject = Instantiate(bulletPrefab, spawnPos, transform.rotation);
-            texto.operator_gen(Random.Range(1, 4));
-            valor = texto.respuesta[texto.respuesta.Count - 1];
-            shootTime = Random.Range(0, 3);
+            texto.operator_gen(x);
             yield return new WaitForSeconds(shootTime);
         }
     }

@@ -227,6 +227,7 @@ GameObject:
   - component: {fileID: 2904535225022070811}
   - component: {fileID: 3525302551312630107}
   - component: {fileID: 8596800571934688926}
+  - component: {fileID: 1570173059453374352}
   m_Layer: 0
   m_Name: Nave_enemigo_lasers
   m_TagString: Untagged
@@ -264,11 +265,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21f42225ce5d46d49beb7781ece6c743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  true_respuesta: {fileID: 5101751960794191234}
   player: {fileID: 0}
   target: {fileID: 7921256388249001716, guid: 1e7c549e7d43e6146a0f7317a85e8e13, type: 3}
   bulletPrefab: {fileID: 2542698167905031607, guid: 4f6e48a0f75dce84bb3025ecc7e8e30c, type: 3}
-  shootTime: 0
+  shootTime: 1.05
   vel: 5
 --- !u!65 &3525302551312630107
 BoxCollider:
@@ -299,6 +299,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 56
   m_CollisionDetection: 0
+--- !u!114 &1570173059453374352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7701563697183820485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc4a1648116f7ae4295d94cccd31cf3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  true_respuesta: {fileID: 5101751960794191234}
 --- !u!1 &7902824749567346160
 GameObject:
   m_ObjectHideFlags: 0

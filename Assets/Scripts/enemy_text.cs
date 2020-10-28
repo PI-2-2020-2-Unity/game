@@ -11,7 +11,8 @@ public class enemy_text : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        valor = operation_gen.respuesta[operation_gen.respuesta.Count - 1];
+        texto.operator_gen(Random.Range(1, 4));
+        valor = texto.respuesta[texto.respuesta.Count - 1];
         true_respuesta.text = valor.ToString();
     }
 

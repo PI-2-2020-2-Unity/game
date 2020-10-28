@@ -6,8 +6,6 @@ using TMPro;
 public class Enemy1 : MonoBehaviour
 {
     Rigidbody rb;
-    public TextMeshProUGUI true_respuesta;
-    private int valor;
     public Transform player;
     public GameObject target;
     public GameObject bulletPrefab;
@@ -18,8 +16,8 @@ public class Enemy1 : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-
         StartCoroutine(ShootCoroutine());
+        
     }
 
     // Update is called once per frame
@@ -38,11 +36,10 @@ public class Enemy1 : MonoBehaviour
     {
         while (true)
         {
-            int x = Random.Range(1, 4);
+           
             Vector3 spawnPos = transform.position ;
-
             GameObject bulletObject = Instantiate(bulletPrefab, spawnPos, transform.rotation);
-            texto.operator_gen(x);
+            
             yield return new WaitForSeconds(shootTime);
         }
     }

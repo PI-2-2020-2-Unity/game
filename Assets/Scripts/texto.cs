@@ -8,7 +8,7 @@ public class texto : MonoBehaviour
     public TextMeshProUGUI optr;
     public TextMeshProUGUI valor1;
     public TextMeshProUGUI Valor2;
-    public static int val1=-1;
+    public static int val1=0;
     public static int n1;
     public static int n2;
     private static int operacion;
@@ -33,8 +33,8 @@ public class texto : MonoBehaviour
 
     void Update()
     {
-        if (val1 >= 0)
-        {
+        
+        
             if (Input.GetKeyDown(KeyCode.E))
             {
                 if (val1 >= true_N1.Count - 1)
@@ -57,13 +57,8 @@ public class texto : MonoBehaviour
                     val1--;
                 }
             }
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                operator_gen(Random.Range(1, 4));
-
-            }
             UpdateText(operador[val1], true_N1[val1], true_N2[val1]);
-        }
+        
     }
     public static void operator_gen(int x)
     {
@@ -84,7 +79,7 @@ public class texto : MonoBehaviour
                 break;
             case 2:
                 Debug.Log("Resta");
-                if(n1 > n2)
+                if(n1 < n2)
                 {
                     int temp = n1;
                     n1 = n2;
@@ -94,6 +89,7 @@ public class texto : MonoBehaviour
                 true_N1.Add(n1);
                 true_N2.Add(n2);
                 respuesta.Add(operacion);
+                operador.Add("-");
                 Debug.Log(n1 + "-" + n2 + "=" + operacion);
                 break;
             case 3:
@@ -102,6 +98,7 @@ public class texto : MonoBehaviour
                 true_N1.Add(n1);
                 true_N2.Add(n2);
                 respuesta.Add(operacion);
+                operador.Add("×");
                 Debug.Log(n1 + "x" + n2 + "=" + operacion);
                 break;
             case 4:

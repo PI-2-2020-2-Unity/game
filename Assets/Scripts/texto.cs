@@ -1,19 +1,23 @@
 ﻿
 using UnityEngine;
+using System.Collections.Generic;
 using TMPro;
 
 public class texto : MonoBehaviour
 {
-
-    int operacion;
-
-    char operador;
-    int n1;
-    int n2;
-    int val1 = 0;
     public TextMeshProUGUI optr;
     public TextMeshProUGUI valor1;
     public TextMeshProUGUI Valor2;
+    public static int val1 = 0;
+    public static int n1;
+    public static int n2;
+    private static int operacion;
+    public static List<int> true_N1 = new List<int>();
+    public static List<int> true_N2 = new List<int>();
+    public static List<string> operador = new List<string>();
+    public static List<int> respuesta = new List<int>();
+    public GameObject[] enemy;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -29,18 +33,37 @@ public class texto : MonoBehaviour
 
     void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.E))
         {
-            val1 = (val1+1)%3;
-            operator_gen(Random.Range(1, 5));
+            if (val1 >= true_N1.Count - 1)
+            {
+                val1 = 0;
+            }
+            else
+            {
+                val1++;
+            }
         }
         else if (Input.GetKeyDown(KeyCode.Q))
         {
-            val1 = (val1-1)%3;
-            operator_gen(Random.Range(1, 5));
+            if (val1 == 0)
+            {
+                val1 = true_N1.Count - 1;
+            }
+            else
+            {
+                val1--;
+            }
         }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            operator_gen(Random.Range(1, 4));
+            
+        }
+        UpdateText(operador[val1], true_N1[val1], true_N2[val1]);
     }
-    public void operator_gen(int x)
+    public static void operator_gen(int x)
     {
         n1 = Random.Range(1, 10);
         n2 = Random.Range(1, 10);
@@ -49,8 +72,12 @@ public class texto : MonoBehaviour
             case 1:
                 Debug.Log("Suma");
                 operacion = n1 + n2;
-                operador = '+';
+                true_N1.Add(n1);
+                true_N2.Add(n2);
+                operador.Add("+");
+                respuesta.Add(operacion);
                 Debug.Log(n1 + "+" + n2 + "=" + operacion);
+                
 
                 break;
             case 2:
@@ -62,21 +89,30 @@ public class texto : MonoBehaviour
                     n2 = temp;
                 }
                 operacion = n1 - n2;
+                true_N1.Add(n1);
+                true_N2.Add(n2);
+                respuesta.Add(operacion);
                 Debug.Log(n1 + "-" + n2 + "=" + operacion);
                 break;
             case 3:
                 Debug.Log("Multiplicacion");
                 operacion = n1 * n2;
+                true_N1.Add(n1);
+                true_N2.Add(n2);
+                respuesta.Add(operacion);
                 Debug.Log(n1 + "x" + n2 + "=" + operacion);
                 break;
             case 4:
                 Debug.Log("Division");
                 operacion = n1 / n2;
+                true_N1.Add(operacion);
+                true_N2.Add(n1);
+                operador.Add("÷");
+                respuesta.Add(n2);
                 Debug.Log(operacion + "/" + n1 + "=" + n2);
                 break;
-            default:
-                break;
+            
         }
-        UpdateText(operador.ToString(), n1, n2);
+        
     }
 }

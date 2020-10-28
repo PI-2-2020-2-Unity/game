@@ -104,8 +104,9 @@ public class operation_gen : MonoBehaviour
                 true_N1.Add(operacion);
                 true_N2.Add(n1);
                 operador.Add("÷");
-                Debug.Log(operacion + "÷" + n1 + "=" + n2);
                 respuesta.Add(n2);
+                Debug.Log(operacion + "÷" + n1 + "=" + n2);
+                
                 break;
             default:
                 break;

@@ -797,6 +797,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: nave_principal
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: bed03d1e8aece754dbfa9075cbb3ad13, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: bed03d1e8aece754dbfa9075cbb3ad13, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2502203975881118265, guid: bed03d1e8aece754dbfa9075cbb3ad13, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3237192597354549013, guid: bed03d1e8aece754dbfa9075cbb3ad13, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3435359730964775795, guid: bed03d1e8aece754dbfa9075cbb3ad13, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9029929894710416849, guid: bed03d1e8aece754dbfa9075cbb3ad13, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bed03d1e8aece754dbfa9075cbb3ad13, type: 3}
 --- !u!4 &1335063244 stripped
@@ -851,8 +875,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: 20
-  shootTime: 0.5
-  bullet: {fileID: 5266086601558369430, guid: bb8251f6268c48f44b8bd73eaddae1a4, type: 3}
+  shootTime: 0.1
+  bullet: {fileID: 8726384297762483090, guid: 6bb42e96ea35c0c02baf0ea7456ad3b2, type: 3}
   pointer: {fileID: 139797533}
   deathEffect: {fileID: 0}
 --- !u!1 &1346888185

@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     public float velocity = 500f;
 
     public float shootTime = 0.5f;
+
+    public float shootVelocity = 50.0f;
     public GameObject bullet;
     static int health = 100;
 
@@ -49,7 +51,7 @@ public class Player : MonoBehaviour
             GameObject _bullet = Instantiate(bullet, transform.position, transform.rotation);
 
             Rigidbody bRb = _bullet.GetComponent<Rigidbody>();
-            bRb.velocity = _bullet.transform.rotation * Vector3.forward * 10f;
+            bRb.velocity = _bullet.transform.rotation * Vector3.right * shootVelocity;
 
             Destroy(_bullet, 5.0f);
 

@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
 
     public TextMeshProUGUI healthText;
 
+    public GameController controller;
+
     private Transform mainCamera;
 
     private float dampTime = 0.2f;
@@ -81,6 +83,7 @@ public class Player : MonoBehaviour
     void Die()
     {
         //Instantiate(deathEffect, transform.position, Quaternion.identity);
+        controller.Lose();
         Destroy(gameObject);
     }
 }

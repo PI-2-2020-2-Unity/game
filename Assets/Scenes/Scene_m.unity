@@ -1114,6 +1114,7 @@ MonoBehaviour:
   pointer: {fileID: 139797533}
   deathEffect: {fileID: 0}
   healthText: {fileID: 1243035683}
+  controller: {fileID: 1346888186}
 --- !u!1 &1346888185
 GameObject:
   m_ObjectHideFlags: 0

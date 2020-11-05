@@ -42,9 +42,12 @@ public class GameController : MonoBehaviour
 
     }
 
-    void Loss()
+    public void Lose()
     {
-
+        foreach(Enemy1 e in enemies)
+        {
+            Destroy(e.gameObject);
+        }
     }
 
     public void setDifficulty(int d)

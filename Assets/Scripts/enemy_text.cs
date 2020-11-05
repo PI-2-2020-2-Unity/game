@@ -16,6 +16,11 @@ public class enemy_text : MonoBehaviour
         true_respuesta.text = valor.ToString();
     }
 
+    public int getValor()
+    {
+        return valor;
+    }
+
     // Update is called once per frame
     void Update()
     {

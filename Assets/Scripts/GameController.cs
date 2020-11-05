@@ -46,7 +46,8 @@ public class GameController : MonoBehaviour
     {
         foreach(Enemy1 e in enemies)
         {
-            Destroy(e.gameObject);
+            if(e != null)
+                Destroy(e.gameObject);
         }
     }
 

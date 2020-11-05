@@ -13,8 +13,11 @@ public class Enemy1 : MonoBehaviour
 
     public float vel = 1f;
 
+    private enemy_text text;
+
     private void Start()
     {
+        text = GetComponent<enemy_text>();
         rb = GetComponent<Rigidbody>();
         StartCoroutine(ShootCoroutine());
         
@@ -41,6 +44,15 @@ public class Enemy1 : MonoBehaviour
             GameObject bulletObject = Instantiate(bulletPrefab, spawnPos, transform.rotation);
             
             yield return new WaitForSeconds(shootTime);
+        }
+    }
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (collider.tag == "PlayerBullet")
+        {
+            // TODO destroy if the operation is correct
+            Destroy(gameObject);
         }
     }
 }

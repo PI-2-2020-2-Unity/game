@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -15,13 +16,20 @@ public class Player : MonoBehaviour
     public Transform pointer;
     public GameObject deathEffect;
 
+    public TextMeshProUGUI healthText;
+
     private Transform mainCamera;
 
     private float dampTime = 0.2f;
 
     private Vector2 vel = Vector2.zero;
 
+    void updateHealthText() {
+        healthText.SetText(health.ToString() + "/100");
+    }
+
     void Start() {
+        updateHealthText();
         mainCamera = Camera.main.transform;
         rb = GetComponent<Rigidbody>();
         StartCoroutine(bulletSpawn());
@@ -59,19 +67,20 @@ public class Player : MonoBehaviour
         }
     }
 
-    public static void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         // Todo 
         health -= damage;
+        updateHealthText();
         if (health <=0)
         {
             Die();
         }
     }
 
-    static void Die()
+    void Die()
     {
         //Instantiate(deathEffect, transform.position, Quaternion.identity);
-        //Destroy(gameObject);
+        Destroy(gameObject);
     }
 }

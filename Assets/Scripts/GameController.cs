@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -49,6 +50,8 @@ public class GameController : MonoBehaviour
             if(e != null)
                 Destroy(e.gameObject);
         }
+
+        SceneManager.LoadScene("Menu", LoadSceneMode.Single);
     }
 
     public void setDifficulty(int d)

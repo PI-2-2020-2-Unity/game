@@ -11,7 +11,6 @@ public class Player : MonoBehaviour
 
     public float shootVelocity = 50.0f;
     public GameObject bullet;
-    static int health = 100;
 
     public Transform pointer;
     public GameObject deathEffect;
@@ -19,6 +18,8 @@ public class Player : MonoBehaviour
     public TextMeshProUGUI healthText;
 
     public GameController controller;
+
+    private int health = 100;
 
     private Transform mainCamera;
 

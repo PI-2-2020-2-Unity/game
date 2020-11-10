@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -51,8 +52,10 @@ public class Enemy1 : MonoBehaviour
     {
         if (collider.tag == "PlayerBullet")
         {
-            // TODO destroy if the operation is correct
-            Destroy(gameObject);
+            if(text.getValor() == texto.respuesta[texto.val1])
+            {
+				Destroy(gameObject);
+            }
         }
     }
 }

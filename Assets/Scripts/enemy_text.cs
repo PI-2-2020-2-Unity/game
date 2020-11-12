@@ -28,3 +28,4 @@ public class enemy_text : MonoBehaviour
     }
 
 }
+// vim: set expandtab:

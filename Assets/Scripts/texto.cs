@@ -1,6 +1,7 @@
 ﻿
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 using TMPro;
 
 public class texto : MonoBehaviour
@@ -17,11 +18,17 @@ public class texto : MonoBehaviour
     public static List<string> operador = new List<string>();
     public static List<int> respuesta = new List<int>();
     public GameObject[] enemy;
-    
+
     // Start is called before the first frame update
     void Start()
     {
-    
+        StartCoroutine(WaitForList());
+    }
+
+    IEnumerator WaitForList()
+    {
+        yield return new WaitUntil(() => true_N1.Count > 0);
+        AddIndex(0);
     }
 
     void UpdateText(string operador, int n1, int n2)
@@ -31,35 +38,46 @@ public class texto : MonoBehaviour
         Valor2.text = n2.ToString();
     }
 
+    public void AddIndex(int n)
+    {
+        if(true_N1.Count == 0)
+        {
+            optr.text = "";
+            valor1.text = "";
+            Valor2.text = "";
+            StartCoroutine(WaitForList());
+            return;
+        }
+
+        val1 = (val1 + n) % true_N1.Count;
+        val1 = val1 < 0 ? val1 + true_N1.Count : val1;
+
+        UpdateText(operador[val1], true_N1[val1], true_N2[val1]);
+    }
+
     void Update()
     {
-        
-        
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                if (val1 >= true_N1.Count - 1)
-                {
-                    val1 = 0;
-                }
-                else
-                {
-                    val1++;
-                }
-            }
-            else if (Input.GetKeyDown(KeyCode.Q))
-            {
-                if (val1 == 0)
-                {
-                    val1 = true_N1.Count - 1;
-                }
-                else
-                {
-                    val1--;
-                }
-            }
-            UpdateText(operador[val1], true_N1[val1], true_N2[val1]);
-        
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            AddIndex(1);
+        }
+        else if (Input.GetKeyDown(KeyCode.Q))
+        {
+            AddIndex(-1);
+        }
     }
+
+    public void remove_operation(int i)
+    {
+        true_N1.RemoveAt(i);
+        true_N2.RemoveAt(i);
+        operador.RemoveAt(i);
+        respuesta.RemoveAt(i);
+
+        AddIndex(0);
+    }
+
+
     public static void operator_gen(int x)
     {
         n1 = Random.Range(1, 10);
@@ -115,3 +133,5 @@ public class texto : MonoBehaviour
         
     }
 }
+
+// vim: set expandtab:

@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
     public List<Enemy1> enemies;
     public GameObject player;
     public GameObject objectToSpawn;
+    public texto text;
     public int randomRange = 30;
     public float spawnTime;
 
@@ -78,6 +79,7 @@ public class GameController : MonoBehaviour
 
             enemy1.player = player.transform;
             enemy1.target = player;
+            enemy1.controller = this;
 
             enemies.Add(enemy1);
             spawnTime = Random.Range(0, 10);

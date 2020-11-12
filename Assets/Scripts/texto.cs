@@ -19,6 +19,8 @@ public class texto : MonoBehaviour
     public static List<int> respuesta = new List<int>();
     public GameObject[] enemy;
 
+    public GameController controller;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +29,7 @@ public class texto : MonoBehaviour
 
     IEnumerator WaitForList()
     {
+        controller.enemyPointer.SetActive(false);
         yield return new WaitUntil(() => true_N1.Count > 0);
         AddIndex(0);
     }
@@ -53,6 +56,7 @@ public class texto : MonoBehaviour
         val1 = val1 < 0 ? val1 + true_N1.Count : val1;
 
         UpdateText(operador[val1], true_N1[val1], true_N2[val1]);
+        controller.updateTarget(val1);
     }
 
     void Update()

@@ -1492,6 +1492,7 @@ MonoBehaviour:
   valor1: {fileID: 1356631835}
   Valor2: {fileID: 616825036}
   enemy: []
+  controller: {fileID: 1346888186}
 --- !u!850595691 &1751001922
 LightingSettings:
   m_ObjectHideFlags: 0

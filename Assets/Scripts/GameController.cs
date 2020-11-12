@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     public float enemyPointerRadius = 1f;
     private float enemyPointerAngle = 0f;
     private RectTransform enemyPointerTransform;
+    private Transform targetTransform;
 
     public List<Enemy1> enemies;
     public GameObject player;
@@ -41,10 +42,27 @@ public class GameController : MonoBehaviour
         StartCoroutine(EnemySpawn());
     }
 
+    public void updateTarget(int val1)
+    {
+        foreach(Enemy1 enemy in enemies)
+        {
+            if(enemy.getValor() == texto.respuesta[val1])
+            {
+                enemyPointer.SetActive(true);
+                targetTransform = enemy.transform;
+                return;
+            }
+        }
+    }
+
     void Update()
     {
-        if(enemyPointer.activeSelf)
+        if(enemyPointer.activeSelf && targetTransform != null)
         {
+            Vector2 dist = targetTransform.position - player.transform.position;
+
+            enemyPointerAngle = Mathf.Atan2(dist.y, dist.x);
+
             enemyPointerTransform.anchoredPosition = new Vector2(
                 Mathf.Cos(enemyPointerAngle),
                 Mathf.Sin(enemyPointerAngle)
@@ -53,7 +71,7 @@ public class GameController : MonoBehaviour
             enemyPointerTransform.eulerAngles = new Vector3(
                 0f,
                 0f,
-                enemyPointerAngle
+                enemyPointerAngle*Mathf.Rad2Deg
             );
         }
     }

@@ -17,6 +17,11 @@ public class Enemy1 : MonoBehaviour
 
     private enemy_text text;
 
+    public int getValor()
+    {
+        return text.getValor();
+    }
+
     private void Start()
     {
         text = GetComponent<enemy_text>();

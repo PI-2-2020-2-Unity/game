@@ -8,6 +8,12 @@ public class GameController : MonoBehaviour
     public Time timer;
 
     public int maxEnemies = 15;
+
+    public GameObject enemyPointer;
+    public float enemyPointerRadius = 1f;
+    private float enemyPointerAngle = 0f;
+    private RectTransform enemyPointerTransform;
+
     public List<Enemy1> enemies;
     public GameObject player;
     public GameObject objectToSpawn;
@@ -26,6 +32,8 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        enemyPointerTransform = enemyPointer.GetComponent<RectTransform>();
+
         this.Difficulty = 0;
         this.mainCamera = Camera.main;
 
@@ -33,10 +41,21 @@ public class GameController : MonoBehaviour
         StartCoroutine(EnemySpawn());
     }
 
-    // Update is called once per frame
     void Update()
     {
-        // TODO: Cada cierto tiempo spawnear enemigos usando Instantiate
+        if(enemyPointer.activeSelf)
+        {
+            enemyPointerTransform.anchoredPosition = new Vector2(
+                Mathf.Cos(enemyPointerAngle),
+                Mathf.Sin(enemyPointerAngle)
+            )*enemyPointerRadius;
+
+            enemyPointerTransform.eulerAngles = new Vector3(
+                0f,
+                0f,
+                enemyPointerAngle
+            );
+        }
     }
 
     void Win()
@@ -87,3 +106,4 @@ public class GameController : MonoBehaviour
         }
     }
 }
+// vim: set expandtab:

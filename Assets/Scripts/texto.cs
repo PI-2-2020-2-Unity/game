@@ -43,6 +43,7 @@ public class texto : MonoBehaviour
 
     public void AddIndex(int n)
     {
+        // TODO hide when the target is on screen
         if(true_N1.Count == 0)
         {
             optr.text = "";
@@ -96,7 +97,7 @@ public class texto : MonoBehaviour
                 operador.Add("+");
                 respuesta.Add(operacion);
                 Debug.Log(n1 + "+" + n2 + "=" + operacion);
-                
+
 
                 break;
             case 2:
@@ -132,9 +133,9 @@ public class texto : MonoBehaviour
                 respuesta.Add(n2);
                 Debug.Log(operacion + "/" + n1 + "=" + n2);
                 break;
-            
+
         }
-        
+
     }
 }
 

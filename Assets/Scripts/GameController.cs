@@ -38,7 +38,7 @@ public class GameController : MonoBehaviour
         this.Difficulty = 0;
         this.mainCamera = Camera.main;
 
-        setDifficulty(0);
+        setDifficulty(1);
         StartCoroutine(EnemySpawn());
     }
 
@@ -99,6 +99,11 @@ public class GameController : MonoBehaviour
 
         // TODO
         mainCamera.backgroundColor = Color.black;
+    }
+
+    public int getDifficulty()
+    {
+        return this.Difficulty;
     }
 
     IEnumerator EnemySpawn()

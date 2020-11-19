@@ -50,6 +50,7 @@ public class Enemy1 : MonoBehaviour
 
             Vector3 spawnPos = transform.position ;
             GameObject bulletObject = Instantiate(bulletPrefab, spawnPos, transform.rotation);
+            bulletPrefab.GetComponent<EnemyBullet>().damage = controller.getDifficulty();
 
             yield return new WaitForSeconds(shootTime);
         }

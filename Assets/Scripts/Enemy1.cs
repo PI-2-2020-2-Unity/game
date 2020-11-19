@@ -28,7 +28,7 @@ public class Enemy1 : MonoBehaviour
         text = GetComponent<enemy_text>();
         rb = GetComponent<Rigidbody>();
         StartCoroutine(ShootCoroutine());
-        
+
     }
 
     // Update is called once per frame
@@ -47,17 +47,18 @@ public class Enemy1 : MonoBehaviour
     {
         while (true)
         {
-           
+
             Vector3 spawnPos = transform.position ;
             GameObject bulletObject = Instantiate(bulletPrefab, spawnPos, transform.rotation);
-            
+
             yield return new WaitForSeconds(shootTime);
         }
     }
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.tag == "pointer")
+        //if (collider.tag == "pointer")
+        if (collider.tag == "PlayerBullet")
         {
             if(text.getValor() == texto.respuesta[texto.val1])
             {

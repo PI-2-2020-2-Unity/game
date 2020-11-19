@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
 
     public GameController controller;
 
-    private int health = 100;
+    public int health = 100;
 
     private Transform mainCamera;
 

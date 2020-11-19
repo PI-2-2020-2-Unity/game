@@ -13,6 +13,7 @@ public class Enemy1 : MonoBehaviour
     public GameController controller;
     public float shootTime;
 
+
     public float vel = 1f;
 
     private enemy_text text;
@@ -56,7 +57,7 @@ public class Enemy1 : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.tag == "PlayerBullet")
+        if (collider.tag == "pointer")
         {
             if(text.getValor() == texto.respuesta[texto.val1])
             {

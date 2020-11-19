@@ -57,9 +57,6 @@ public class GameController : MonoBehaviour
 
     bool inScreen(Transform transform)
     {
-        if(transform == null)
-            return false;
-
         Vector3 position = mainCamera.WorldToViewportPoint(transform.position);
 
         return
@@ -70,7 +67,8 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-        enemyPointer.SetActive(!inScreen(targetTransform));
+        if(targetTransform)
+            enemyPointer.SetActive(!inScreen(targetTransform));
 
         if(enemyPointer.activeSelf && targetTransform != null)
         {

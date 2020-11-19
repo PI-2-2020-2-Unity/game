@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
 
     public GameController controller;
 
-    public int health = 100;
+    public int health = 3;
 
     private Transform mainCamera;
 
@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
     private Vector2 vel = Vector2.zero;
 
     void updateHealthText() {
-        healthText.SetText(health.ToString() + "/100");
+        healthText.SetText(health.ToString() + "/3");
     }
 
     void Start() {
@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        // Todo 
+        // Todo
         health -= damage;
         updateHealthText();
         if (health <=0)

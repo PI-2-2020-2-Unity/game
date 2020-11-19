@@ -55,8 +55,23 @@ public class GameController : MonoBehaviour
         }
     }
 
+    bool inScreen(Transform transform)
+    {
+        if(transform == null)
+            return false;
+
+        Vector3 position = mainCamera.WorldToViewportPoint(transform.position);
+
+        return
+            position.x >= 0.0f && position.x <= 1.0f &&
+            position.y >= 0.0f && position.y <= 1.0f
+        ;
+    }
+
     void Update()
     {
+        enemyPointer.SetActive(!inScreen(targetTransform));
+
         if(enemyPointer.activeSelf && targetTransform != null)
         {
             Vector2 dist = targetTransform.position - player.transform.position;

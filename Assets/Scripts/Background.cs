@@ -32,9 +32,19 @@ public class Background : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // TODO Add and remove tiles when the player moves
+        // TODO Remove tiles when the player moves
         if(player)
-            tilemap.SetTile(WorldToGrid(player.position), tile);
+        {
+            Vector3Int grindPoint = WorldToGrid(player.position);
+
+            for(int x = grindPoint.x-1; x < grindPoint.x+2; ++x)
+            {
+                for(int y = grindPoint.y-1; y < grindPoint.y+2; ++y)
+                {
+                    tilemap.SetTile(new Vector3Int(x, y, 0), tile);
+                }
+            }
+        }
     }
 }
 

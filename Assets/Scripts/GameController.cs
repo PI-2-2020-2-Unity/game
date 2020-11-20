@@ -46,7 +46,7 @@ public class GameController : MonoBehaviour
     {
         foreach(Enemy1 enemy in enemies)
         {
-            if(enemy.getValor() == texto.respuesta[val1])
+            if(enemy && enemy.getValor() == texto.respuesta[val1])
             {
                 enemyPointer.SetActive(true);
                 targetTransform = enemy.transform;
@@ -70,7 +70,7 @@ public class GameController : MonoBehaviour
         if(targetTransform)
             enemyPointer.SetActive(!inScreen(targetTransform));
 
-        if(enemyPointer.activeSelf && targetTransform != null)
+        if(enemyPointer.activeSelf && targetTransform != null && player)
         {
             Vector2 dist = targetTransform.position - player.transform.position;
 
@@ -121,7 +121,7 @@ public class GameController : MonoBehaviour
 
     IEnumerator EnemySpawn()
     {
-        while (enemies.Count < maxEnemies)
+        while (enemies.Count < maxEnemies && player)
         {
             Vector3 spawnPos = new Vector3(
                 player.transform.position.x + Random.Range(-randomRange, randomRange),

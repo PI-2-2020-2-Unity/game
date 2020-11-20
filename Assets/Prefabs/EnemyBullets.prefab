@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1c4168a169b52ed4fb39267d801d53ed, type: 2}
+  - {fileID: 2100000, guid: 63f16fae2a0a0f44fa04c3e725df4ad4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -161,7 +161,7 @@ MonoBehaviour:
   lifeDuration: 5
   damage: 1
   target: {fileID: 0}
-  impactEffect: {fileID: 0}
+  impactEffect: {fileID: 100004, guid: 2857e183f4cd3df4e9096e5b578bd32f, type: 3}
 --- !u!1 &2701064399549132745
 GameObject:
   m_ObjectHideFlags: 0

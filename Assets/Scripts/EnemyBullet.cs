@@ -24,6 +24,7 @@ public class EnemyBullet : MonoBehaviour
         {
             //Debug.Log(player);
             Destroy(gameObject);
+            Instantiate(impactEffect, transform.position, transform.rotation);
             collision.gameObject.GetComponent<Player>().TakeDamage(damage);
         }
         //Instantiate(impactEffect, transform.position, transform.rotation);
@@ -34,6 +35,7 @@ public class EnemyBullet : MonoBehaviour
         if (collider.tag == "Player")
         {
             Destroy(gameObject);
+            Instantiate(impactEffect, transform.position, transform.rotation);
             collider.gameObject.GetComponent<Player>().TakeDamage(damage);
         }
         //Player player = collider.GetComponent<Player>();

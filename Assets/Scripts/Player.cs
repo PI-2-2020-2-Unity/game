@@ -77,14 +77,15 @@ public class Player : MonoBehaviour
         updateHealthText();
         if (health <=0)
         {
-            Die();
+            StartCoroutine(Die());
         }
     }
 
-    void Die()
+    IEnumerator Die()
     {
-        //Instantiate(deathEffect, transform.position, Quaternion.identity);
+        Instantiate(deathEffect, transform.position, Quaternion.identity);
+        Destroy(rb);
+        yield return new WaitForSeconds(0.5f);
         controller.Lose();
-        Destroy(gameObject);
     }
 }

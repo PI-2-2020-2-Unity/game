@@ -760,7 +760,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -33.92}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1364,7 +1364,7 @@ MonoBehaviour:
   shootVelocity: 50
   bullet: {fileID: 8726384297762483090, guid: 6bb42e96ea35c0c02baf0ea7456ad3b2, type: 3}
   pointer: {fileID: 139797533}
-  deathEffect: {fileID: 0}
+  deathEffect: {fileID: 100008, guid: a93496017806b7740910df5fd946f306, type: 3}
   healthText: {fileID: 1243035683}
   controller: {fileID: 1346888186}
   health: 3

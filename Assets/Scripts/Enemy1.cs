@@ -34,18 +34,21 @@ public class Enemy1 : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Quaternion toTarget = Quaternion.LookRotation(
-            target.transform.position - transform.position,
-            Vector3.back
-        );
+        if (target)
+        {
+            Quaternion toTarget = Quaternion.LookRotation(
+                target.transform.position - transform.position,
+                Vector3.back
+            );
 
-        rb.rotation = toTarget;
-        rb.velocity = toTarget * Vector3.forward * vel;
+            rb.rotation = toTarget;
+            rb.velocity = toTarget * Vector3.forward * vel;
+        }
     }
 
     IEnumerator ShootCoroutine()
     {
-        while (true)
+        while (target)
         {
 
             Vector3 spawnPos = transform.position ;

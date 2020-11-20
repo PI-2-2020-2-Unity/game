@@ -46,7 +46,7 @@ public class GameController : MonoBehaviour
     {
         foreach(Enemy1 enemy in enemies)
         {
-            if(enemy.getValor() == texto.respuesta[val1])
+            if(enemy && enemy.getValor() == texto.respuesta[val1])
             {
                 enemyPointer.SetActive(true);
                 targetTransform = enemy.transform;

@@ -26,22 +26,33 @@ public class Background : MonoBehaviour
         grid = GetComponent<Grid>();
 
         grid.cellSize = tile.sprite.bounds.size;
-        //tilemap.SetTile(Vector3Int.zero, tile);
+        tilemap.ClearAllTiles();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // TODO Remove tiles when the player moves
         if(player)
         {
             Vector3Int grindPoint = WorldToGrid(player.position);
 
-            for(int x = grindPoint.x-1; x < grindPoint.x+2; ++x)
+            for(int x = grindPoint.x-2; x < grindPoint.x+3; ++x)
             {
-                for(int y = grindPoint.y-1; y < grindPoint.y+2; ++y)
+                for(int y = grindPoint.y-2; y < grindPoint.y+3; ++y)
                 {
-                    tilemap.SetTile(new Vector3Int(x, y, 0), tile);
+                    Vector3Int cell = new Vector3Int(x, y, 0);
+
+                    if(
+                        x > grindPoint.x-2 && x < grindPoint.x+2 &&
+                        y > grindPoint.y-2 && y < grindPoint.y+2
+                    ) // In 3x3
+                    {
+                        tilemap.SetTile(cell, tile);
+                    }
+                    else
+                    {
+                        tilemap.SetTile(cell, null);
+                    }
                 }
             }
         }

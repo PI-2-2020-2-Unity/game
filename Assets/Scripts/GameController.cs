@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour
     public Time timer;
 
     public int maxEnemies = 15;
-
+    public int maxEnemies2 = 15;
     public GameObject enemyPointer;
     public float enemyPointerRadius = 1f;
     private float enemyPointerAngle = 0f;
@@ -16,8 +16,10 @@ public class GameController : MonoBehaviour
     private Transform targetTransform;
 
     public List<Enemy1> enemies;
+    public List<Enemy2> enemies2;
     public GameObject player;
     public GameObject objectToSpawn;
+    public GameObject objectToSpawn2;
     public texto text;
     public int randomRange = 30;
     public float spawnTime;
@@ -26,7 +28,7 @@ public class GameController : MonoBehaviour
 
     Camera mainCamera;
 
-    //public Enemy2[] enemies2;
+    
     //public Enemy3[] enemies3;
     //public Boss[] bosses;
 
@@ -40,6 +42,7 @@ public class GameController : MonoBehaviour
 
         setDifficulty(1);
         StartCoroutine(EnemySpawn());
+        StartCoroutine(Enemy2Spawn());
     }
 
     public void updateTarget(int val1)
@@ -137,6 +140,29 @@ public class GameController : MonoBehaviour
             enemy1.controller = this;
 
             enemies.Add(enemy1);
+            spawnTime = Random.Range(0, 10);
+            yield return new WaitForSeconds(spawnTime);
+        }
+    }
+
+    IEnumerator Enemy2Spawn ()
+    {
+        while (enemies2.Count < maxEnemies && player)
+        {
+            Vector3 spawnPos = new Vector3(
+                player.transform.position.x + Random.Range(-randomRange, randomRange),
+                player.transform.position.y + Random.Range(-randomRange, randomRange),
+                0f
+            );
+            GameObject enemy = Instantiate(objectToSpawn2, spawnPos, player.transform.rotation);
+
+            Enemy2 enemy2 = enemy.GetComponent<Enemy2>();
+
+            enemy2.player = player.transform;
+            enemy2.target = player;
+            enemy2.controller = this;
+
+            enemies2.Add(enemy2);
             spawnTime = Random.Range(0, 10);
             yield return new WaitForSeconds(spawnTime);
         }

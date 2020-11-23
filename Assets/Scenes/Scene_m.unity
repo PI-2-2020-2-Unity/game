@@ -760,7 +760,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -33.92}
+  m_LocalPosition: {x: 0, y: 0, z: -43.993}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1234,6 +1234,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5716681864270162303, guid: bed03d1e8aece754dbfa9075cbb3ad13, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: bed03d1e8aece754dbfa9075cbb3ad13, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1285,6 +1289,10 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: bed03d1e8aece754dbfa9075cbb3ad13, type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: bed03d1e8aece754dbfa9075cbb3ad13, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: bed03d1e8aece754dbfa9075cbb3ad13, type: 3}
       propertyPath: m_TagString
@@ -1398,11 +1406,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxEnemies: 15
+  maxEnemies2: 15
   enemyPointer: {fileID: 307075087}
   enemyPointerRadius: 3
   enemies: []
+  enemies2: []
   player: {fileID: 1335063245}
   objectToSpawn: {fileID: 7701563697183820485, guid: 7b5c9400cd8ef5be6a9a2c78d5961ec7, type: 3}
+  objectToSpawn2: {fileID: 5833301420806075619, guid: 907918104ad3d0a43aeca0aee193e00d, type: 3}
   text: {fileID: 1375834335}
   randomRange: 30
   spawnTime: 0

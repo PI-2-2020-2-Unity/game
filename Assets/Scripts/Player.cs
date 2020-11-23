@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitUntil(() => Input.GetKey("space"));
+            yield return new WaitUntil(() => Input.GetButton("Fire1"));
 
             GameObject _bullet = Instantiate(bullet, transform.position, transform.rotation);
 

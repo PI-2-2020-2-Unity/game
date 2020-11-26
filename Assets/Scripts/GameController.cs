@@ -27,7 +27,8 @@ public class GameController : MonoBehaviour
 
     int Difficulty;
 
-    Camera mainCamera;
+    [HideInInspector]
+    public Camera mainCamera;
 
 
     //public Enemy3[] enemies3;

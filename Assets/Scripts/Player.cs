@@ -39,6 +39,9 @@ public class Player : MonoBehaviour
     }
     void FixedUpdate()
     {
+        if(!rb)
+            return;
+
         Vector2 dist = pointer.position - transform.position;
 
         float angle = Mathf.Atan2(dist.y, dist.x) * Mathf.Rad2Deg;
@@ -58,6 +61,19 @@ public class Player : MonoBehaviour
         while (true)
         {
             yield return new WaitUntil(() => Input.GetButton("Fire1"));
+
+            Ray ray = controller.mainCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if(Physics.Raycast(ray, out hit, 50.0f))
+            {
+                Debug.Log("hit");
+                Debug.Log(hit.transform.tag);
+            }
+            else
+            {
+                Debug.Log("no hit");
+            }
 
             GameObject _bullet = Instantiate(bullet, transform.position, transform.rotation);
 
@@ -89,3 +105,5 @@ public class Player : MonoBehaviour
         controller.Lose();
     }
 }
+
+// vim: set expandtab:

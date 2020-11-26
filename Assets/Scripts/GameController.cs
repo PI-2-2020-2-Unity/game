@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour
     private float enemyPointerAngle = 0f;
     private RectTransform enemyPointerTransform;
     private Transform targetTransform;
+    public GameObject PauseText;
 
     public List<Enemy1> enemies;
     public List<Enemy2> enemies2;
@@ -70,6 +71,20 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
+        if(Input.GetKeyUp(KeyCode.Escape))
+        {
+            if(Time.timeScale > 0.0f)
+            {
+                Time.timeScale = 0.0f;
+                PauseText.SetActive(true);
+            }
+            else
+            {
+                Time.timeScale = 1.0f;
+                PauseText.SetActive(false);
+            }
+        }
+
         if(targetTransform)
             enemyPointer.SetActive(!inScreen(targetTransform));
 

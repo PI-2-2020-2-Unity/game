@@ -28,7 +28,7 @@ public class GameController : MonoBehaviour
 
     Camera mainCamera;
 
-    
+
     //public Enemy3[] enemies3;
     //public Boss[] bosses;
 
@@ -105,7 +105,7 @@ public class GameController : MonoBehaviour
                 Destroy(e.gameObject);
         }
 
-        SceneManager.LoadScene("Menu", LoadSceneMode.Single);
+        SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
     }
 
     public void setDifficulty(int d)

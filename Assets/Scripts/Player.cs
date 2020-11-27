@@ -69,18 +69,26 @@ public class Player : MonoBehaviour
             {
                 Debug.Log("hit");
                 Debug.Log(hit.transform.tag);
+
+                if(hit.transform.tag == "Enemy1" || hit.transform.tag == "Upgrade2")
+                {
+                    GameObject _bullet = Instantiate(
+                        bullet,
+                        transform.position,
+                        transform.rotation
+                    );
+
+                    Rigidbody bRb = _bullet.GetComponent<Rigidbody>();
+                    bRb.velocity = _bullet.transform.rotation * Vector3.right * shootVelocity;
+
+                    Destroy(_bullet, 5.0f);
+                }
             }
             else
             {
                 Debug.Log("no hit");
             }
 
-            GameObject _bullet = Instantiate(bullet, transform.position, transform.rotation);
-
-            Rigidbody bRb = _bullet.GetComponent<Rigidbody>();
-            bRb.velocity = _bullet.transform.rotation * Vector3.right * shootVelocity;
-
-            Destroy(_bullet, 5.0f);
 
             yield return new WaitForSeconds(shootTime);
         }

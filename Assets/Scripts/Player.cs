@@ -39,6 +39,9 @@ public class Player : MonoBehaviour
     }
     void FixedUpdate()
     {
+        if(!rb)
+            return;
+
         Vector2 dist = pointer.position - transform.position;
 
         float angle = Mathf.Atan2(dist.y, dist.x) * Mathf.Rad2Deg;
@@ -57,14 +60,35 @@ public class Player : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitUntil(() => Input.GetKey("space"));
+            yield return new WaitUntil(() => Input.GetButton("Fire1"));
 
-            GameObject _bullet = Instantiate(bullet, transform.position, transform.rotation);
+            Ray ray = controller.mainCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
 
-            Rigidbody bRb = _bullet.GetComponent<Rigidbody>();
-            bRb.velocity = _bullet.transform.rotation * Vector3.right * shootVelocity;
+            if(Physics.Raycast(ray, out hit, 50.0f))
+            {
+                Debug.Log("hit");
+                Debug.Log(hit.transform.tag);
 
-            Destroy(_bullet, 5.0f);
+                if(hit.transform.tag == "Enemy1" || hit.transform.tag == "Upgrade2")
+                {
+                    GameObject _bullet = Instantiate(
+                        bullet,
+                        transform.position,
+                        transform.rotation
+                    );
+
+                    Rigidbody bRb = _bullet.GetComponent<Rigidbody>();
+                    bRb.velocity = _bullet.transform.rotation * Vector3.right * shootVelocity;
+
+                    Destroy(_bullet, 5.0f);
+                }
+            }
+            else
+            {
+                Debug.Log("no hit");
+            }
+
 
             yield return new WaitForSeconds(shootTime);
         }
@@ -89,3 +113,5 @@ public class Player : MonoBehaviour
         controller.Lose();
     }
 }
+
+// vim: set expandtab:

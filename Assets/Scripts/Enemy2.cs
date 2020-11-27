@@ -10,9 +10,11 @@ public class Enemy2 : MonoBehaviour
     public GameObject bulletPrefab;
     public GameController controller;
     public float shootTime;
+
     public float invisible_time;
     public float visible_time;
     public TextMeshProUGUI value;
+
 
     public float vel = 1f;
 
@@ -25,6 +27,7 @@ public class Enemy2 : MonoBehaviour
 
     private void Start()
     {
+
         text = GetComponent<enemy_text>();
         rb = GetComponent<Rigidbody>();
         StartCoroutine(ShootCoroutine());
@@ -57,6 +60,7 @@ public class Enemy2 : MonoBehaviour
 
             yield return new WaitForSeconds(shootTime);
         }
+
 
     }
 

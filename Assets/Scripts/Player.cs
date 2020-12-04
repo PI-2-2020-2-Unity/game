@@ -27,6 +27,10 @@ public class Player : MonoBehaviour
 
     private Vector2 vel = Vector2.zero;
 
+    private AudioSource audioSource;
+
+
+
     void updateHealthText() {
         healthText.SetText(health.ToString() + "/3");
     }
@@ -35,6 +39,7 @@ public class Player : MonoBehaviour
         updateHealthText();
         mainCamera = Camera.main.transform;
         rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
         StartCoroutine(bulletSpawn());
     }
     void FixedUpdate()
@@ -67,6 +72,7 @@ public class Player : MonoBehaviour
 
             if(Physics.Raycast(ray, out hit, 50.0f))
             {
+                audioSource.Play();
                 Debug.Log("hit");
                 Debug.Log(hit.transform.tag);
 

@@ -11,6 +11,7 @@ public class Enemy1 : MonoBehaviour
     public GameObject target;
     public GameObject bulletPrefab;
     public GameController controller;
+    public GameObject deathEffect;
     public float shootTime;
 
 
@@ -67,9 +68,16 @@ public class Enemy1 : MonoBehaviour
             if(text.getValor() == texto.respuesta[texto.val1])
             {
                 controller.text.remove_operation(texto.val1);
-                Destroy(gameObject);
+                StartCoroutine(Die());
             }
         }
+    }
+
+    IEnumerator Die()
+    {
+        Instantiate(deathEffect, transform.position, Quaternion.identity);
+        Destroy(gameObject);
+        yield return new WaitForSeconds(0.1f);
     }
 }
 // vim: set expandtab:

@@ -14,6 +14,7 @@ public class Enemy2 : MonoBehaviour
     public float invisible_time;
     public float visible_time;
     public TextMeshProUGUI value;
+    public GameObject deathEffect;
 
 
     public float vel = 1f;
@@ -85,8 +86,15 @@ public class Enemy2 : MonoBehaviour
             if (text.getValor() == texto.respuesta[texto.val1])
             {
                 controller.text.remove_operation(texto.val1);
-                Destroy(gameObject);
+                StartCoroutine(Die());
             }
         }
+    }
+
+    IEnumerator Die()
+    {
+        Instantiate(deathEffect, transform.position, Quaternion.identity);
+        Destroy(gameObject);
+        yield return new WaitForSeconds(0.1f);
     }
 }

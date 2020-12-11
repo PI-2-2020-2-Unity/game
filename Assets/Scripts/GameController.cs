@@ -16,6 +16,10 @@ public class GameController : MonoBehaviour
     private Transform targetTransform;
     public GameObject PauseText;
 
+    [Header("Boss")]
+    public GameObject bossPrefab;
+    public int counterToBoss;
+
     public List<Enemy1> enemies;
     public List<Enemy2> enemies2;
     public GameObject player;
@@ -106,6 +110,14 @@ public class GameController : MonoBehaviour
                 enemyPointerAngle*Mathf.Rad2Deg
             );
         }
+
+        if (Enemy1.enemy1DeadCounter + Enemy2.enemy2DeadCounter == counterToBoss)
+        {
+            counterToBoss = 0;
+            Vector3 posicion = Camera.main.transform.position;
+            posicion.z = 0f;
+            Instantiate(bossPrefab, posicion, Quaternion.identity);
+        }
     }
 
     void Win()
@@ -156,8 +168,8 @@ public class GameController : MonoBehaviour
             enemy1.controller = this;
 
             enemies.Add(enemy1);
-            spawnTime = Random.Range(0, 10);
-            yield return new WaitForSeconds(spawnTime);
+            float spawn = Random.Range(0, spawnTime);
+            yield return new WaitForSeconds(spawn);
         }
     }
 
@@ -179,8 +191,8 @@ public class GameController : MonoBehaviour
             enemy2.controller = this;
 
             enemies2.Add(enemy2);
-            spawnTime = Random.Range(0, 10);
-            yield return new WaitForSeconds(spawnTime);
+            float spawn = Random.Range(0, spawnTime);
+            yield return new WaitForSeconds(spawn);
         }
     }
 }

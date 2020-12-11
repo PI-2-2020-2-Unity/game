@@ -13,6 +13,9 @@ public class Enemy1 : MonoBehaviour
     public GameController controller;
     public GameObject deathEffect;
     public float shootTime;
+    public static int enemy1DeadCounter = 0;
+    public AudioClip deathClip;
+    public AudioClip weaponShootClip;
 
 
     public float vel = 1f;
@@ -55,7 +58,7 @@ public class Enemy1 : MonoBehaviour
             Vector3 spawnPos = transform.position ;
             GameObject bulletObject = Instantiate(bulletPrefab, spawnPos, transform.rotation);
             bulletPrefab.GetComponent<EnemyBullet>().damage = controller.getDifficulty();
-
+            AudioSource.PlayClipAtPoint(weaponShootClip, gameObject.transform.position, 60);
             yield return new WaitForSeconds(shootTime);
         }
     }
@@ -67,6 +70,7 @@ public class Enemy1 : MonoBehaviour
         {
             if(text.getValor() == texto.respuesta[texto.val1])
             {
+                AudioSource.PlayClipAtPoint(deathClip, gameObject.transform.position, 60);
                 controller.text.remove_operation(texto.val1);
                 StartCoroutine(Die());
             }
@@ -75,6 +79,7 @@ public class Enemy1 : MonoBehaviour
 
     IEnumerator Die()
     {
+        enemy1DeadCounter++;
         Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
         yield return new WaitForSeconds(0.1f);

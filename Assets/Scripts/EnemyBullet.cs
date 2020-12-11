@@ -7,7 +7,7 @@ public class EnemyBullet : MonoBehaviour
     public float speed = 20f;
     public float lifeDuration = 5f;
     public int damage = 1;
-    public GameObject target;
+    //public GameObject target;
     public GameObject impactEffect;
     // Start is called before the first frame update
     void Start()

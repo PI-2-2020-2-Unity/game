@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
 
     private Vector2 vel = Vector2.zero;
 
-    private AudioSource audioSource;
+    public AudioClip audioClip;
 
 
 
@@ -39,7 +39,6 @@ public class Player : MonoBehaviour
         updateHealthText();
         mainCamera = Camera.main.transform;
         rb = GetComponent<Rigidbody>();
-        audioSource = GetComponent<AudioSource>();
         StartCoroutine(bulletSpawn());
     }
     void FixedUpdate()
@@ -65,14 +64,14 @@ public class Player : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitUntil(() => Input.GetButton("Fire1"));
+            yield return new WaitUntil(() => Input.GetButton("Jump"));
 
             Ray ray = controller.mainCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
             if(Physics.Raycast(ray, out hit, 50.0f))
             {
-                audioSource.Play();
+                AudioSource.PlayClipAtPoint(audioClip, gameObject.transform.position, 60);
                 Debug.Log("hit");
                 Debug.Log(hit.transform.tag);
 

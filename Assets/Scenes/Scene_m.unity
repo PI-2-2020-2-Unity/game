@@ -1550,7 +1550,7 @@ MonoBehaviour:
   objectToSpawn2: {fileID: 5833301420806075619, guid: 907918104ad3d0a43aeca0aee193e00d, type: 3}
   text: {fileID: 458717569}
   randomRange: 30
-  spawnTime: 0
+  spawnTime: 20
   mainCamera: {fileID: 0}
 --- !u!4 &1346888187
 Transform:

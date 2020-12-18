@@ -114,8 +114,11 @@ public class GameController : MonoBehaviour
         if (Enemy1.enemy1DeadCounter + Enemy2.enemy2DeadCounter == counterToBoss)
         {
             counterToBoss = 0;
-            Vector3 posicion = Camera.main.transform.position;
-            posicion.z = 0f;
+            Vector3 posicion = new Vector3(
+                Camera.main.transform.position.x + Random.Range(-randomRange, randomRange),
+                Camera.main.transform.position.y + Random.Range(-randomRange, randomRange),
+                0f
+            );
             Instantiate(bossPrefab, posicion, Quaternion.identity);
             StopCoroutine(EnemySpawn());
             StopCoroutine(Enemy2Spawn());

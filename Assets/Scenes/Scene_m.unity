@@ -1542,7 +1542,7 @@ MonoBehaviour:
   enemyPointerRadius: 3
   PauseText: {fileID: 83791782}
   bossPrefab: {fileID: 4608013905368465351, guid: 2101122a2d6287142b88347f06a1a762, type: 3}
-  counterToBoss: 2
+  counterToBoss: 1
   enemies: []
   enemies2: []
   player: {fileID: 1335063245}

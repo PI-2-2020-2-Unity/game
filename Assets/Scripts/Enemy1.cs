@@ -73,6 +73,7 @@ public class Enemy1 : MonoBehaviour
                 AudioSource.PlayClipAtPoint(deathClip, gameObject.transform.position, 60);
                 controller.text.remove_operation(texto.val1);
                 StartCoroutine(Die());
+                Destroy(collider.gameObject);
             }
         }
     }

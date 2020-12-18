@@ -85,7 +85,6 @@ public class Player : MonoBehaviour
 
                     Rigidbody bRb = _bullet.GetComponent<Rigidbody>();
                     bRb.velocity = _bullet.transform.rotation * Vector3.right * shootVelocity;
-
                     Destroy(_bullet, 5.0f);
                 }
             }

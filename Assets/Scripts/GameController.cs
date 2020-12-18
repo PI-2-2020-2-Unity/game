@@ -117,6 +117,18 @@ public class GameController : MonoBehaviour
             Vector3 posicion = Camera.main.transform.position;
             posicion.z = 0f;
             Instantiate(bossPrefab, posicion, Quaternion.identity);
+            StopCoroutine(EnemySpawn());
+            StopCoroutine(Enemy2Spawn());
+            maxEnemies = 0;
+            maxEnemies2 = 0;
+            foreach (Enemy1 enemy in enemies)
+            {
+                if (enemy) enemy.gameObject.SetActive(false);
+            };
+            foreach (Enemy2 enemy2 in enemies2)
+            {
+                if(enemy2) enemy2.gameObject.SetActive(false);
+            };
         }
     }
 
